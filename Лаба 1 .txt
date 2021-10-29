@@ -1,0 +1,90 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Student {
+private:
+	string Familiya, Name, Otchestvo, Adress, data_roj, fak, tel;
+	int kurs;
+public:
+	Student(string Familiya_, string Name_, string Otchestvo_, string data_roj_, string Adress_, string tel_, string fak_, int kurs_) {
+		Familiya = Familiya_;
+		Name = Name_;
+		Otchestvo = Otchestvo_;
+		data_roj = data_roj_;
+		Adress = Adress_;
+		tel = tel_;
+		fak = fak_;
+		kurs = kurs_;
+	}
+
+	void show() {
+		cout << "Familiya-" << Familiya << endl << "Name-" << Name << endl << "Otchestvo-" << Otchestvo << endl << "data_roj-" << data_roj << endl << "Adress-" << Adress << endl << "Tel-" << tel << endl << "fak-" << fak << endl << "kurs-" << kurs << endl << endl;
+	}
+	void dan_fak_(string fac) {
+		if (fak==fac)
+		{
+			show();
+		}
+	}
+	void gr_fak(string fk) {
+		if (fk == fak) {
+			show();
+		}
+	};
+	void put_kurs() {
+		int i;
+		for (i = 1; i <= 6; i++) {
+			if (kurs == i) {
+				show();
+			}
+		}
+	};
+	void ye_roj(string x) {
+		if (data_roj[6] * 1000 + data_roj[7] * 100 + data_roj[8] * 10 + data_roj[9] > x[0] * 1000 + x[1] * 100 + x[2] * 10 + x[3])
+		{
+			show();
+		}
+	};
+	~Student() {
+
+	}
+};
+int main() {
+	Student Massiv[5]{
+		Student("Kononov","Dmitriy","Petrovich","31.11.2003", "74 Robinson Loop Wilsonport","883106445357372","IiVT",2),
+		Student("Nilovich","Sergey","Vladimirovich","09.03.2000", "523 Rose Place East Quentinville","845806339791939", "AMIU",4),
+		Student("Kovach","Nikita","Sergeevich","14.02.2000", "760 Paula Shore Powellchester","872816906194452", "IiVT",5),
+		Student("Egorov","Danil","Valerevich","15.11.2002", "Flat 28n Phillips Gateway Lake Courtney","828513013531089", "IiVT",5),
+		Student("Lomach","Igor","Maksimovich","18.09.2002", "Flat 12c Melissa Plain East Anthonyton","829897236115913", "AMIU",5)
+	};
+	string fac_[]{ "AMIU","IiVT" };
+	cout << "===============================================================";
+	cout << endl << "Spisok Show:"<< endl;
+	for (int i = 0; i < 5; i++) {
+		Massiv[i].show();
+	};
+	cout << "===============================================================";
+	cout << endl << "Spisok dan_fak_:" << endl;
+	for (int i = 0; i < 5; i++) {
+		Massiv[i].dan_fak_("AMIU");
+	};
+	cout << "===============================================================";
+	cout << endl << "Spisok group_fak:" << endl;
+	for (int j = 0; j <= 1; j++) {
+		 for (int i = 0; i < 5; i++){
+			 Massiv[i].gr_fak(fac_[j]);
+		}
+	}
+	cout << "===============================================================";
+	cout << endl << "Spisok kurs:" << endl;
+	for (int i = 0; i < 5; i++) {
+		Massiv[i].put_kurs();
+	};
+	cout << "===============================================================";
+	cout << endl << "Spisok ye_roj:" << endl;
+	for (int i = 0; i < 5; i++) {
+		Massiv[i].ye_roj("2001");
+	};
+	return 0;
+
+}
